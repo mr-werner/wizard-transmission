@@ -1,8 +1,14 @@
-import { ClipboardCheck, Cog, Droplets, Facebook, Gauge, Mountain, MapPin, Search, ShieldCheck, Sparkles, Star, Wand2, Waves, Wrench, Phone, AlertTriangle, Volume2 } from "lucide-react";
+import { AlertTriangle, Droplets, Facebook, Gauge, Volume2 } from "lucide-react";
+import logo from "./assets/wizard-logo.png";
+import logoWhite from "./assets/wizard-logo-white.png";
+import atraSeal from "./assets/atra-golden-rule-seal.png";
+import bbbBadge from "./assets/bbb-a-plus.png";
 
 const COMPANY = "Wizard Transmission";
 const MAPS_QUERY = "Wizard Transmission, 2271 W Evans Ave, Denver, CO 80223";
-const FOUNDED = 1995;
+// The current site says 1994 in three places (banner, About timeline, repair page) and
+// 1995 in one (home-page story). We use 1994; the owner must confirm.
+const FOUNDED = 1994;
 const YEARS = new Date().getFullYear() - FOUNDED;
 
 export default {
@@ -16,133 +22,147 @@ export default {
   CITY: "Denver, CO 80223",
   MAPS_QUERY,
   FOUNDED,
+  YEARS,
   GOOGLE_PLACE_ID: "",
-  // Shown until live Google data loads. From a third-party listing on 2026-10-14; confirm before launch.
+  // Shown until live Google data loads. From our lead research on 2026-10-14; confirm before launch.
   FALLBACK_RATING: { rating: 4.8, userRatingCount: 217 },
   END_DATE: "2026-11-20T23:59:59-07:00",
 
-  BRAND: { name: "Wizard", sub: "TRANSMISSION · DENVER", icon: Wand2 },
-  ANNOUNCE: `Family owned and operated since ${FOUNDED} · Free 27-point inspection and diagnostic scan`,
-
-  HOURS: [], // Not listed on the current site; confirm with the shop.
-  HOURS_SHORT: "",
+  BRAND: { name: "Wizard", logo, logoWhite, logoAlt: "Wizard Transmission" },
+  TOPBAR: `Family owned since ${FOUNDED}`,
+  HOURS: [["Monday – Friday", "7:00am – 5:00pm"], ["Saturday", "Closed"], ["Sunday", "Closed"]],
+  HOURS_SHORT: "Mon–Fri 7am–5pm",
 
   HERO: {
-    eyebrow: `WEST EVANS AVENUE, DENVER · SINCE ${FOUNDED}`,
-    title: ["Denver's honest ", "transmission specialists."],
-    text: `Automatic, manual, differential and 4x4 work from a family-owned shop that has been earning Denver's trust for ${YEARS} years, starting at the estimate.`,
-    cta: "Request a Free Inspection",
-    card: [
-      { icon: ClipboardCheck, title: "Free quality check", text: "27-point inspection and diagnostic scan" },
-      { icon: MapPin, title: "2271 W Evans Ave", text: "Denver, CO 80223" },
-      { icon: ShieldCheck, title: "Warranty on all work", text: "Every repair and rebuild is covered" },
-    ],
+    eyebrow: `2271 W EVANS AVE · DENVER · SINCE ${FOUNDED}`,
+    title: ["Denver's transmission ", "wizards."],
+    text: "Automatic, manual, differential and 4x4 repair from a family-owned shop. ATRA-certified technicians, honest estimates, and a 3-year / 36,000-mile warranty on every rebuild.",
+    cta: "Book a Free Inspection",
+    coupon: {
+      kicker: "ALWAYS FREE",
+      big: "27-point",
+      title: "inspection + diagnostic scan",
+      text: "A 3–4 hour drivetrain check before anyone talks about price.",
+    },
   },
 
-  STATS: (rating) => [
-    [String(FOUNDED), "Family owned since"],
-    [`${YEARS} yrs`, "Rebuilding transmissions"],
-    [rating ? `${rating.rating.toFixed(1)} ★` : "5 ★", "Google rating"],
-    ["Free", "27-point inspection"],
-  ],
+  MAKES: ["Ford", "Chevrolet", "GMC", "Jeep", "Dodge", "Chrysler", "Honda", "Acura", "Nissan", "Lexus", "Audi", "BMW", "Cadillac", "Jaguar", "Hyundai", "Diesels", "RVs & motorhomes"],
 
   SERVICES: {
-    eyebrow: "WHAT WE DO",
-    title: ["Transmissions are all we do. ", "So we do them right."],
-    text: "Specialists, not generalists. If it shifts, spins or sends power to the wheels, we know it inside and out.",
-    cta: "Request an estimate",
-    items: [
-      { title: "Automatic Transmissions", desc: "Diagnosis, repair and rebuilds for all makes and models.", icon: Cog },
-      { title: "Manual Transmissions", desc: "Clutches, gear sets and manual gearbox repair done by hand.", icon: Gauge },
-      { title: "Custom Rebuilds", desc: "Rebuilds tailored to how you drive, tow or race.", icon: Sparkles },
-      { title: "Differential Repair", desc: "Whining, clunking or leaking diffs, with diagnosis at no cost.", icon: Wrench },
-      { title: "4x4 & AWD", desc: "Transfer cases and drivetrains for Colorado's mountain miles.", icon: Mountain },
-      { title: "Free Quality Check", desc: "A complimentary 27-point inspection and diagnostic scan.", icon: Search },
+    eyebrow: "WHAT WE FIX",
+    title: ["Pick a gear. ", "We know them all."],
+    text: "Specialists, not generalists: a few services, done on every make and model, foreign and domestic.",
+    main: [
+      {
+        gear: "1",
+        title: "Transmission Repair",
+        photo: "/photos/automatic.webp",
+        alt: "Cutaway of an automatic transmission's gear sets",
+        desc: "Automatic and manual, from a quick repair to a complete rebuild.",
+        bullets: ["Complete rebuilds with OEM parts", "Manual rebuilds: shafts, gears, synchros, bearings", "Cooler flush, the weak spot in many designs"],
+        warranty: "3 yr / 36,000 mi",
+      },
+      {
+        gear: "2",
+        title: "Differential Repair",
+        photo: "/photos/differential.webp",
+        alt: "Close-up of a differential's spider gears and carrier",
+        desc: "Accurate diagnosis at no charge, then the fix it actually needs.",
+        bullets: ["Soft overhaul: bearings, shims, axle seals", "Complete overhaul: ring and pinion", "Re-gearing for oversized tires"],
+        warranty: "2 yr / 24,000 mi",
+      },
+      {
+        gear: "3",
+        title: "4x4 & AWD",
+        photo: "/photos/offroad-4x4.webp",
+        alt: "A pickup truck climbing a rocky mountain trail",
+        desc: "Four-wheel drive, all-wheel drive and transfer cases, built for Colorado.",
+        bullets: ["Transfer case service and repair", "Locking hub service", "Leak checks and lubrication"],
+        warranty: "2 yr / 24,000 mi",
+      },
+    ],
+    more: [
+      { gear: "4", title: "Custom Rebuilds", desc: "Built to spec for towing and high-performance vehicles, with auxiliary cooling to beat heat." },
+      { gear: "5", title: "RVs, Motorhomes & Diesels", desc: "Two buildings, five bays and a 30,000 lb lift for RVs, motorhomes and heavy vehicles." },
+      { gear: "R", title: "Fluid & Filter Service", desc: "Fresh fluid before winter. Rocking out of a snowbank is hard on a transmission." },
     ],
   },
 
-  FEATURE: {
-    id: "signs",
-    nav: "Warning Signs",
+  GUARANTEE: {
+    eyebrow: "THE WIZARD GUARANTEE",
+    title: ["Backed in writing. ", "Serviced for life."],
+    text: "Every rebuild leaves with a warranty and free annual service for as long as you own the vehicle.",
+    terms: [
+      ["3 yr / 36,000 mi", "Warranty on transmission rebuilds"],
+      ["2 yr / 24,000 mi", "Warranty on differential, 4x4 and AWD rebuilds"],
+      ["Free for life", "Annual service while you own the vehicle"],
+      ["Free towing", "In most cases within the Denver metro"],
+    ],
+    badges: [
+      { img: atraSeal, alt: "ATRA member, Golden Rule Warranty, nationwide", title: "ATRA Golden Rule Warranty", text: "Member · honored nationwide" },
+      { img: bbbBadge, alt: "BBB Accredited Business, A+ rating", title: "BBB A+ Rating", text: "Accredited Business", url: "https://www.bbb.org/denver/business-reviews/transmissions-automobile/wizard-transmission-in-denver-co-42684" },
+    ],
+    certified: { title: "ATRA-certified technicians", text: "Automatic Transmission Rebuilders Association certification: more intensive than most." },
+  },
+
+  SIGNS: {
     eyebrow: "KNOW THE WARNING SIGNS",
-    title: ["Catch it early, ", "save a rebuild."],
-    text: "Transmission problems rarely fix themselves. If you notice any of these, bring it in for a free check.",
+    title: ["Feel it, hear it, smell it? ", "Bring it in."],
+    text: "Drivetrain problems don't fix themselves, and caught early, a repair can save a rebuild.",
     cards: [
-      { name: "Slipping", icon: Gauge, lead: "Revs climb but the car doesn't.", items: ["RPMs flare between gears", "Sluggish acceleration", "Feels like it's in neutral"] },
-      { name: "Rough shifts", icon: AlertTriangle, lead: "Harsh, late or delayed.", items: ["Clunk when shifting into drive", "Delay before it engages", "Hard or jerky upshifts"] },
-      { name: "Leaks & smells", icon: Droplets, lead: "Fluid is the lifeblood.", items: ["Red fluid under the car", "Burning smell after driving", "Low or dark fluid"] },
-      { name: "Noises & shudder", icon: Volume2, lead: "Listen to your drivetrain.", items: ["Whining or humming", "Shudder at steady speed", "Grinding in manual gears"] },
-    ],
-  },
-
-  PROCESS: {
-    eyebrow: "HOW IT WORKS",
-    title: ["We earn your trust ", "at the estimate."],
-    text: "Quality repairs at fair prices, explained before any work begins.",
-    steps: [
-      ["Free inspection", "27-point inspection and diagnostic scan at no charge."],
-      ["Honest estimate", "We tell you what's wrong and what it really needs, repair or rebuild."],
-      ["Expert repair", "Your transmission is rebuilt or repaired in-house."],
-      ["Warrantied work", "Every job is backed by our warranty."],
+      { name: "Shifting", icon: Gauge, items: ["Slipping or erratic shifts", "Harsh engagement from park into gear", "Won't engage, or stuck in 4WD"] },
+      { name: "Noises", icon: Volume2, items: ["Grinding, shaking or engine racing", "Whining or howling when accelerating", "Clunk or whistle near the axle"] },
+      { name: "Leaks & smells", icon: Droplets, items: ["Reddish fluid under the car", "A sweet burning smell", "Low or dark fluid"] },
+      { name: "Dash lights", icon: AlertTriangle, items: ["Check engine light", "Overdrive light stuck on or flashing", "Transmission temperature or 4WD light"] },
     ],
   },
 
   ABOUT: {
-    nav: "Our Story",
     eyebrow: "OUR STORY",
-    title: ["It started in ", "a home garage."],
+    title: ["Named by Mom. ", "Earned in the shop."],
+    photo: { src: "/photos/wizard-family.webp", alt: "The Wizard Transmission team in red shop shirts outside the West Evans Avenue shop" },
     text: [
-      "Adam started rebuilding transmissions in his garage while working full time at another shop. With his parents' encouragement and his wife's business sense, he opened Wizard Transmission on his 31st birthday, March 1, 1995.",
-      "His mother, Wanda, named the business. She'd always said he was a wizard at fixing things. More than three decades later, it's still an independent, family-owned shop focused on quality repairs at fair prices.",
+      "Adam Lightfield built his first transmission at 15. When he finally opened his own shop, his mother Wanda named it: she'd always said he had magic hands, and she liked words that start with W.",
+      `${YEARS} years later, Wizard is still independent and family run, with the same promise: quality repairs at fair prices, and honesty at the estimate.`,
     ],
-    badge: [String(FOUNDED), "Opened March 1"],
-    tiles: [
-      { label: "Automatic", icon: Cog },
-      { label: "Manual", icon: Gauge },
-      { label: "Differential", icon: Wrench },
-      { label: "4x4 & AWD", icon: Mountain },
+    timeline: [
+      ["Age 15", "Builds his first transmission, then trains at Wyoming Tech."],
+      ["1980s", "Rebuilds in Fort Collins and Loveland, then six years with AAMCO in California."],
+      ["1991", "Comes home to Colorado to manage and build at a Denver shop."],
+      [String(FOUNDED), "Opens Wizard Transmission on March 1 at 1790 South Broadway."],
+      ["1999", "Buys the shop on West Evans: five bays, a dedicated rebuild building and an RV lift."],
     ],
-    credentials: [
-      { title: "Family owned", desc: "Independent and operated by the family that started it." },
-      { title: "Warranty on all work", desc: "Every repair and rebuild is covered." },
-      { title: "All makes and models", desc: "Cars, trucks, SUVs, 4x4 and AWD." },
-      { title: "BBB listed", desc: "Find us with the Better Business Bureau in Denver." },
-    ],
-  },
-
-  REVIEWS: {
-    title: ["Trusted by Denver ", "drivers."],
-    text: "Read what customers say about the shop on Google.",
-    quoteSource: "",
-    quotes: [],
   },
 
   BOOK: {
     nav: "Free Inspection",
-    eyebrow: "FREE INSPECTION",
+    eyebrow: "FREE 27-POINT INSPECTION",
     title: ["Something feel off? ", "Let's take a look."],
-    text: "Request a free 27-point inspection and diagnostic scan. We'll call to set a time.",
-    points: ["Free 27-point inspection and scan", "Free differential diagnosis", "Warranty on all work"],
+    text: "Request your free inspection and diagnostic scan. We'll call to set a time.",
+    steps: [
+      ["Free inspection", "27 points plus a full diagnostic scan, at no charge."],
+      ["Straight answer", "What's wrong and what it really needs, explained before any work."],
+      ["Built in-house", "Rebuilt in our own rebuild shop with OEM parts."],
+      ["Covered", "Warranty plus free annual service while you own it."],
+    ],
     submit: "Request Free Inspection",
     note: "We'll call to set up your inspection. Prefer to talk now? Call",
     fields: [
       [{ name: "name", label: "Name", required: true, autoComplete: "name" }, { name: "phone", label: "Phone", type: "tel", required: true, autoComplete: "tel" }],
       [{ name: "email", label: "Email", type: "email", autoComplete: "email" }, { name: "vehicle", label: "Vehicle", placeholder: "Year, make, model" }],
-      [{ name: "service", label: "Service", type: "select", placeholder: "Choose a service…", options: ["Not sure / free inspection", "Automatic Transmissions", "Manual Transmissions", "Custom Rebuilds", "Differential Repair", "4x4 & AWD"] }, { name: "date", label: "Preferred day", type: "date" }],
-      { name: "notes", label: "What's it doing?", type: "textarea", placeholder: "Slipping, leaks, noises, when it started…" },
+      [{ name: "service", label: "Service", type: "select", placeholder: "Choose a service…", options: ["Not sure / free inspection", "Transmission Repair", "Differential Repair", "4x4 & AWD", "Custom Rebuilds", "RVs, Motorhomes & Diesels", "Fluid & Filter Service"] }, { name: "date", label: "Preferred day", type: "date" }],
+      { name: "notes", label: "What's it doing?", type: "textarea", placeholder: "Slipping, leaks, noises, warning lights, when it started…" },
     ],
   },
 
   VISIT: {
-    nav: "Visit",
     eyebrow: "VISIT THE SHOP",
     title: ["Find us on ", "West Evans."],
-    areas: "Serving Denver and the surrounding metro area.",
+    areas: "Serving Denver and the metro area. Free towing available in most cases within the metro.",
   },
 
-  FOOTER_BLURB: `Family-owned transmission specialists on West Evans Avenue in Denver since ${FOUNDED}.`,
+  FOOTER_BLURB: `Family-owned transmission, differential and 4x4 specialists on West Evans Avenue in Denver since ${FOUNDED}.`,
   SOCIAL_LINKS: [
-    { name: "Facebook", url: "https://www.facebook.com/pages/Wizard-Transmissions/134393236611884", icon: Facebook },
-    { name: "Google", url: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAPS_QUERY)}`, icon: Star },
+    { name: "Facebook", url: "https://www.facebook.com/134393236611884", icon: Facebook, top: true },
   ],
 };

@@ -1,29 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap");
 
+/*
+  Wizard Transmission palette, taken from the current site and logo:
+  - Logo black (logo.jpg ink)            -> --ink #111111
+  - Button / CTA red (#960000 in theme)  -> --red #b3121b (brightened a step for contrast and energy)
+  - "Since 1994" banner yellow (#ffcc00) -> --accent #ffcc00
+  Added: a warm paper neutral and a graphite second dark so black sections don't all read the same.
+*/
 :root {
-  --ink: #17142b;
-  --ink-2: #211c3d;
-  --steel: #5b3fc4;
-  --accent: #f0b429;
-  --accent-ink: #17142b;
-  --accent-hover: #f3c250;
-  --accent-deep: #ce9b23;
-  --accent-soft: #f7d689;
-  --accent-glow: rgba(240, 180, 41, 0.18);
-  --steel-glow: rgba(91, 63, 196, 0.5);
-  --paper: #f5f4f8;
+  --heading-font: "Oswald", "Arial Narrow", sans-serif;
+  --body-font: "Barlow", system-ui, sans-serif;
+  --label-font: "Barlow Condensed", "Arial Narrow", sans-serif;
+
+  --ink: #111111;
+  --ink-2: #1d1b19;
+  --graphite: #2a2724;
+  --red: #b3121b;
+  --red-hover: #cf1a24;
+  --red-deep: #7e0b11;
+  --steel: #b3121b;
+  --accent: #ffcc00;
+  --accent-ink: #111111;
+  --accent-hover: #ffd83d;
+  --accent-deep: #c99a00;
+  --accent-soft: #ffe27a;
+  --paper: #f5f1e8;
+  --paper-2: #ebe5d7;
   --card: #ffffff;
-  --card-hover: #fefaf2;
-  --muted: #7b7987;
-  --faint: #9c9aa6;
-  --label: #454355;
-  --line: rgba(23, 20, 43, 0.14);
-  --line-light: rgba(255, 255, 255, .16);
-  --header-bg: rgba(23, 20, 43, 0.9);
-  --deep: #0f0d1c;
-  --deep-line: #4a485a;
-  --on-dark: #cccbd0;
-  --on-dark-2: #a7a6ae;
-  --on-dark-strong: #e8e8ea;
+  --muted: #625d55;
+  --faint: #8f897f;
+  --label: #3d3934;
+  --line: rgba(17, 17, 17, 0.14);
+  --line-light: rgba(255, 255, 255, 0.16);
+  --deep: #0a0a0a;
+  --deep-line: #3a3632;
+  --on-dark: #d4cfc6;
+  --on-dark-2: #a39d93;
+  --on-dark-strong: #f1ede6;
   background: var(--paper);
 }
