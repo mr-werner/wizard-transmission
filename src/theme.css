@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
+
+:root {
+  --ink: #17142b;
+  --ink-2: #211c3d;
+  --steel: #5b3fc4;
+  --accent: #f0b429;
+  --accent-ink: #17142b;
+  --accent-hover: #f3c250;
+  --accent-deep: #ce9b23;
+  --accent-soft: #f7d689;
+  --accent-glow: rgba(240, 180, 41, 0.18);
+  --steel-glow: rgba(91, 63, 196, 0.5);
+  --paper: #f5f4f8;
+  --card: #ffffff;
+  --card-hover: #fefaf2;
+  --muted: #7b7987;
+  --faint: #9c9aa6;
+  --label: #454355;
+  --line: rgba(23, 20, 43, 0.14);
+  --line-light: rgba(255, 255, 255, .16);
+  --header-bg: rgba(23, 20, 43, 0.9);
+  --deep: #0f0d1c;
+  --deep-line: #4a485a;
+  --on-dark: #cccbd0;
+  --on-dark-2: #a7a6ae;
+  --on-dark-strong: #e8e8ea;
+  background: var(--paper);
+}
